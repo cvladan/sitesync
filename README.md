@@ -48,7 +48,7 @@ Currently doesn't seem to work for multisite.
 
 ## WP-CLI Integration
 
-1. First you need to install WP-CLI. [Guide for Windows10 »](https://github.com/hrsetyono/wordpress/wiki/Installing-WP-CLI-on-Windows-10)
+1. First you need to install WP-CLI. ([Guide for Windows10 »](https://github.com/hrsetyono/wordpress/wiki/Installing-WP-CLI-on-Windows-10))
 
 1. Create a migration profile in WP-Admin.
 
