@@ -3,6 +3,7 @@
   "description": "WordPress plugin to sync database between different installs",
   "keywords": ["wordpress", "plugin", "database", "sync"],
   "type": "wordpress-plugin",
+<<<<<<< HEAD
   "homepage": "https://github.com/hrsetyono/wp-sync-db/",
   "authors": [
     {
@@ -16,6 +17,9 @@
       "homepage": "https://pixelstudio.id"
     }
   ],
+=======
+  "homepage": "https://github.com/danone89/wp-sync-db",
+>>>>>>> 4a586d0 (Update composer.json)
   "license": "GPL-2.0",
   "require": {
     "php": ">=7.0.0",
