@@ -1,14 +1,14 @@
+
+# From Maintainer
+This is  fixed version of wp-sync-db plugin. Since orginal author dropped support - I made some fixes for PHP 7.X and Wordpress 5.X
+
 # WP Sync DB
 
 > Note: This is the combination of WP-Sync-DB and 2 of its Addons: Media Files and CLI.
 
 Copy your database from one WP install to another with a few clicks in your dashboard.
 
-Especially handy for syncing a local development database with a live site.
-
-![](https://raw.github.com/hrsetyono/cdn/master/sync-db/migration-process.png)
-
-**TABLE OF CONTENTS**
+## Description
 
 1. [How to Use](#how-to-use)
 1. [Sync Media Files](#sync-media-files)
