@@ -22,8 +22,12 @@
 >>>>>>> 4a586d0 (Update composer.json)
   "license": "GPL-2.0",
   "require": {
+<<<<<<< HEAD
     "php": ">=7.0.0",
     "composer/installers": "~1.0"
+=======
+    "composer/installers": "^1.0.6"
+>>>>>>> a3d34fb (Update composer.json)
   },
   "scripts": {
     "test": "./test.sh"
