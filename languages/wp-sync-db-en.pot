@@ -415,11 +415,11 @@ msgid ""
 msgstr ""
 
 #: class/wpsdb.php:2392
-msgid "Migrate DB & Save"
+msgid "Synchronize & Save"
 msgstr ""
 
 #: class/wpsdb.php:2393
-msgid "Migrate DB"
+msgid "Synchronize"
 msgstr ""
 
 #: class/wpsdb.php:2394

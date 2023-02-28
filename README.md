@@ -25,18 +25,18 @@ The guide below assume you're using it to sync online db with local one.
 
 1. Install this plugin on BOTH your online and local installation.
 
-1. In your online installation, go to Tools > Migrate DB > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
+1. In your online installation, go to Tools > Synchronize > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
 
 1. Copy the **Connection Info**.
 
-1. In your local installation, go to Tools > Migrate DB > Migrate tab. Choose Pull or Push and paste in the Connection Info.
+1. In your local installation, go to Tools > Synchronize > Migrate tab. Choose Pull or Push and paste in the Connection Info.
 
     > **PULL** means downloading the online db and use it to overwrite your local db.  
     > **PUSH** is uploading your local db to overwrite online db.
 
 1. Configure the Search & Replace. Usually you also need to replace "https" to "http" or vice versa.
 
-1. Click "Migrate DB" and wait for it to finish.
+1. Click "Synchronize" and wait for it to finish.
 
 ## Sync Media Files
 
@@ -89,18 +89,18 @@ The guide below assume you're using it to sync online db with local one.
 
 1. Install this plugin on BOTH your online and local installation.
 
-1. In your online installation, go to Tools > Migrate DB > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
+1. In your online installation, go to Tools > Synchronize > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
 
 1. Copy the **Connection Info**.
 
-1. In your local installation, go to Tools > Migrate DB > Migrate tab. Choose Pull or Push and paste in the Connection Info.
+1. In your local installation, go to Tools > Synchronize > Migrate tab. Choose Pull or Push and paste in the Connection Info.
 
     > **PULL** means downloading the online db and use it to overwrite your local db.  
     > **PUSH** is uploading your local db to overwrite online db.
 
 1. Configure the Search & Replace. Usually you also need to replace "https" to "http" or vice versa.
 
-1. Click "Migrate DB" and wait for it to finish.
+1. Click "Sync Site" and wait for it to finish.
 
 ## Sync Media Files
 

@@ -38,13 +38,13 @@ class WPSDB extends WPSDB_Base {
 
     if( empty( $this->settings['max_request'] ) ) {
       $this->settings['max_request'] = min( 1024 * 1024, $this->get_bottleneck( 'max' ) );
-      update_option( 'wpsdb_settings', $this->settings );
+      update_option( SS_OPTION_SETTINGS, $this->settings );
     }
 
     // if no settings exist then this is a fresh install, set up some default settings
     if ( empty( $this->settings ) ) {
       $this->settings = $default_settings;
-      update_option( 'wpsdb_settings', $this->settings );
+      update_option( SS_OPTION_SETTINGS, $this->settings );
     }
     // When we add a new setting, an existing customer's db won't have this
     // new setting, so we need to add it. Otherwise, they'll see
@@ -60,7 +60,7 @@ class WPSDB extends WPSDB_Base {
       }
 
       if ( $update_settings ) {
-        update_option( 'wpsdb_settings', $this->settings );
+        update_option( SS_OPTION_SETTINGS, $this->settings );
       }
     }
 
@@ -180,7 +180,7 @@ class WPSDB extends WPSDB_Base {
 
   function ajax_blacklist_plugins() {
     $this->settings['blacklist_plugins'] = $_POST['blacklist_plugins'];
-    update_option( 'wpsdb_settings', $this->settings );
+    update_option( SS_OPTION_SETTINGS, $this->settings );
     exit;
   }
 
@@ -278,7 +278,7 @@ class WPSDB extends WPSDB_Base {
   function ajax_update_max_request_size() {
     $this->check_ajax_referer( 'update-max-request-size' );
     $this->settings['max_request'] = (int) $_POST['max_request_size'] * 1024;
-    update_option( 'wpsdb_settings', $this->settings );
+    update_option( SS_OPTION_SETTINGS, $this->settings );
     $result = $this->end_ajax();
     return $result;
   }
@@ -315,7 +315,7 @@ class WPSDB extends WPSDB_Base {
 
   function ajax_clear_log() {
     $this->check_ajax_referer( 'clear-log' );
-    delete_option( 'wpsdb_error_log' );
+    delete_option( SS_OPTION_ERRORLOG );
     $result = $this->end_ajax();
     return $result;
   }
@@ -331,7 +331,7 @@ class WPSDB extends WPSDB_Base {
   }
 
   function output_log_file() {
-    $log = get_option( 'wpsdb_error_log' );
+    $log = get_option( SS_OPTION_ERRORLOG );
     if( $log ) {
       echo $log;
     }
@@ -546,7 +546,7 @@ class WPSDB extends WPSDB_Base {
 
     $sql = "SET FOREIGN_KEY_CHECKS=0;\n";
 
-    $preserved_options = array( 'wpsdb_settings', 'wpsdb_error_log' );
+    $preserved_options = [ SS_OPTION_SETTINGS, SS_OPTION_ERRORLOG ];
 
     $this->form_data = $this->parse_migration_form_data( $_POST['form_data'] );
     if( isset( $this->form_data['keep_active_plugins'] ) ) {
@@ -1025,7 +1025,7 @@ class WPSDB extends WPSDB_Base {
       $this->settings['profiles'][$key] = $profile;
       $this->settings['profiles'][$key]['name'] = $name;
     }
-    update_option( 'wpsdb_settings', $this->settings );
+    update_option( SS_OPTION_SETTINGS, $this->settings );
     end( $this->settings['profiles'] );
     $key = key( $this->settings['profiles'] );
     $result = $this->end_ajax( $key );
@@ -1035,7 +1035,7 @@ class WPSDB extends WPSDB_Base {
   function ajax_save_setting() {
     $this->check_ajax_referer( 'save-setting' );
     $this->settings[$_POST['setting']] = ( $_POST['checked'] == 'false' ? false : true );
-    update_option( 'wpsdb_settings', $this->settings );
+    update_option( SS_OPTION_SETTINGS, $this->settings );
     $result = $this->end_ajax();
     return $result;
   }
@@ -1047,7 +1047,7 @@ class WPSDB extends WPSDB_Base {
     $return = '';
     if ( isset( $this->settings['profiles'][$key] ) ) {
       unset( $this->settings['profiles'][$key] );
-      update_option( 'wpsdb_settings', $this->settings );
+      update_option( SS_OPTION_SETTINGS, $this->settings );
     }
     else {
       $return = '-1';
@@ -1059,7 +1059,7 @@ class WPSDB extends WPSDB_Base {
   function ajax_reset_api_key() {
     $this->check_ajax_referer( 'reset-api-key' );
     $this->settings['key'] = $this->generate_key();
-    update_option( 'wpsdb_settings', $this->settings );
+    update_option( SS_OPTION_SETTINGS, $this->settings );
     $result = $this->end_ajax( sprintf( "%s\n%s", site_url( '', 'https' ), $this->settings['key'] ) );
     return $result;
   }
@@ -1111,7 +1111,7 @@ class WPSDB extends WPSDB_Base {
       $this->settings['profiles'][$profile]['exclude_post_types'] = '1';
       $this->settings['profiles'][$profile]['select_post_types'] = array_values( array_diff( $response['post_types'], $this->settings['profiles'][$profile]['select_post_types'] ) );
       $response['select_post_types'] = $this->settings['profiles'][$profile]['select_post_types'];
-      update_option( 'wpsdb_settings', $this->settings );
+      update_option( SS_OPTION_SETTINGS, $this->settings );
     }
 
     $response['scheme'] = $url_bits['scheme'];
@@ -1322,7 +1322,7 @@ class WPSDB extends WPSDB_Base {
 
     <div class="wrap wpsdb">
 
-      <div id="icon-tools" class="icon32"><br /></div><h2>Migrate DB</h2>
+      <div id="icon-tools" class="icon32"><br /></div><h2>Synchronize Site</h2>
 
       <h2 class="nav-tab-wrapper"><a href="#" class="nav-tab nav-tab-active js-action-link migrate" data-div-name="migrate-tab"><?php _e( 'Migrate', 'wp-sync-db' ); ?></a><a href="#" class="nav-tab js-action-link settings" data-div-name="settings-tab"><?php _e( 'Settings', 'wp-sync-db' ); ?></a><a href="#" class="nav-tab js-action-link help" data-div-name="help-tab"><?php _e( 'Help', 'wp-sync-db' ); ?></a></h2>
 
@@ -2172,13 +2172,13 @@ class WPSDB extends WPSDB_Base {
     return str_replace( '\'', '\\\'', $a_string );
   }
 
-  function network_admin_menu() {
-    $hook_suffix = add_submenu_page( 'settings.php', 'Migrate DB', 'Migrate DB', 'manage_network_options', 'wp-sync-db', array( $this, 'options_page' ) );
+  function network_admin_menu() {hronize
+    $hook_suffix = add_submenu_page( 'settings.php', 'Synchronize', 'Synchronize', 'manage_network_options', 'wp-sync-db', array( $this, 'options_page' ) );
     $this->after_admin_menu( $hook_suffix );
   }
 
   function admin_menu() {
-    $hook_suffix = add_management_page( 'Migrate DB', 'Migrate DB', 'export', 'wp-sync-db', array( $this, 'options_page' ) );
+    $hook_suffix = add_management_page( 'Synchronize', 'Synchronize', 'export', 'wp-sync-db', array( $this, 'options_page' ) );
     $this->after_admin_menu( $hook_suffix );
   }
 
@@ -2235,8 +2235,8 @@ class WPSDB extends WPSDB_Base {
       'connection_local_server_problem'		=> __( "A problem occurred when attempting to connect to the local server, please check the details and try again.", 'wp-sync-db' ),
       'clear_log_problem'						=> __( "An error occurred when trying to clear the debug log. Please contact support. (#132)", 'wp-sync-db' ),
       'update_log_problem'					=> __( "An error occurred when trying to update the debug log. Please contact support. (#133)", 'wp-sync-db' ),
-      'migrate_db_save'						=> __( "Migrate DB & Save", 'wp-sync-db' ),
-      'migrate_db'							=> __( "Migrate DB", 'wp-sync-db' ),
+      'migrate_db_save'						=> __( "Synchronize & Save", 'wp-sync-db' ),
+      'migrate_db'							=> __( "Synchronize", 'wp-sync-db' ),
       'please_select_one_table'				=> __( "Please select at least one table to migrate.", 'wp-sync-db' ),
       'enter_name_for_profile'				=> __( "Please enter a name for your migration profile.", 'wp-sync-db' ),
       'save_profile_problem'					=> __( "An error occurred when attempting to save the migration profile. Please see the Help tab for details on how to request support. (#118)", 'wp-sync-db' ),
@@ -2388,7 +2388,7 @@ class WPSDB extends WPSDB_Base {
 
     if ( $profile_changed ) {
       $this->settings['profiles'][$profile_id] = $profile;
-      update_option( 'wpsdb_settings', $this->settings );
+      update_option( SS_OPTION_SETTINGS, $this->settings );
     }
     return $profile;
   }

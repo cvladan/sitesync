@@ -433,7 +433,7 @@ $loaded_profile = wp_parse_args( $loaded_profile, $this->checkbox_options );
 			<div class="notification-message warning-notice prefix-notice pull">
 				<h4><?php _e( 'Warning: Different Table Prefixes', 'wp-sync-db' ); ?></h4>
 
-				<p><?php _e( 'Whoa! We\'ve detected that the database table prefix differs between installations. Clicking the Migrate DB button below will create new database tables in your local database with prefix "<span class="remote-prefix"></span>".', 'wp-sync-db' ); ?></p>
+				<p><?php _e( 'Whoa! We\'ve detected that the database table prefix differs between installations. Clicking the Synchronize button below will create new database tables in your local database with prefix "<span class="remote-prefix"></span>".', 'wp-sync-db' ); ?></p>
 
 				<p><?php printf( __( 'However, your local install is configured to use table prefix "%1$s" and will ignore the migrated tables. So, <b>AFTER</b> migration is complete, you will need to edit your local install\'s wp-config.php and change the "%1$s" variable to "<span class="remote-prefix"></span>".', 'wp-sync-db' ), $wpdb->prefix, $wpdb->prefix ); ?></p>
 
@@ -443,7 +443,7 @@ $loaded_profile = wp_parse_args( $loaded_profile, $this->checkbox_options );
 			<div class="notification-message warning-notice prefix-notice push">
 				<h4><?php _e( 'Warning: Different Table Prefixes', 'wp-sync-db' ); ?></h4>
 
-				<p><?php printf( __( 'Whoa! We\'ve detected that the database table prefix differs between installations. Clicking the Migrate DB button below will create new database tables in the remote database with prefix "%s".', 'wp-sync-db' ), $wpdb->prefix ); ?></p>
+				<p><?php printf( __( 'Whoa! We\'ve detected that the database table prefix differs between installations. Clicking the Synchronize button below will create new database tables in the remote database with prefix "%s".', 'wp-sync-db' ), $wpdb->prefix ); ?></p>
 
 				<p><?php printf( __( 'However, your remote install is configured to use table prefix "<span class="remote-prefix"></span>" and will ignore the migrated tables. So, <b>AFTER</b> migration is complete, you will need to edit your remote install\'s wp-config.php and change the "<span class="remote-prefix"></span>" variable to "%s".', 'wp-sync-db' ), $wpdb->prefix ); ?></p>
 
@@ -452,7 +452,7 @@ $loaded_profile = wp_parse_args( $loaded_profile, $this->checkbox_options );
 
 			<p class="migrate-db">
 				<input type="hidden" class="remote-json-data" name="remote_json_data" autocomplete="off" />
-				<input class="button-primary migrate-db-button" type="submit" value="Migrate DB" name="Submit" autocomplete="off" />
+				<input class="button-primary migrate-db-button" type="submit" value="Synchronize" name="Submit" autocomplete="off" />
 				<input class="button save-settings-button" type="submit" value="Save Profile" name="submit_save_profile" autocomplete="off" />
 			</p>
 
