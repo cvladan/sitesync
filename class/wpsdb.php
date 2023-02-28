@@ -564,9 +564,12 @@ class WPSDB extends WPSDB_Base {
 
     $preserved_options_data = $wpdb->get_results( sprintf( "SELECT * FROM %soptions WHERE `option_name` IN ('%s')", $wpdb->prefix, implode( "','", $preserved_options ) ), ARRAY_A );
 
+    $here_prefix = $wpdb->prefix;
+    error_log($here_prefix);
+
     foreach( $preserved_options_data as $option ) {
-      $sql .= $wpdb->prepare( "DELETE FROM `{$_POST['prefix']}options` WHERE `option_name` = %s;\n", $option['option_name'] );
-      $sql .= $wpdb->prepare( "INSERT INTO `{$_POST['prefix']}options` ( `option_id`, `option_name`, `option_value`, `autoload` ) VALUES ( NULL , %s, %s, %s );\n", $option['option_name'], $option['option_value'], $option['autoload'] );
+      $sql .= $wpdb->prepare( "DELETE FROM `{$here_prefix}options` WHERE `option_name` = %s;\n", $option['option_name'] );
+      $sql .= $wpdb->prepare( "INSERT INTO `{$here_prefix}options` ( `option_id`, `option_name`, `option_value`, `autoload` ) VALUES ( NULL , %s, %s, %s );\n", $option['option_name'], $option['option_value'], $option['autoload'] );
     }
 
     $alter_table_name = $this->get_alter_table_name();
