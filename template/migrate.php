@@ -2,8 +2,8 @@
 global $wpdb;
 global $loaded_profile;
 
-if( isset( $_GET['wpsdb-profile'] ) ){
-	$loaded_profile = $this->get_profile( $_GET['wpsdb-profile'] );
+if( isset( $_GET[QUERY_VAR_NAME_PROFILE] ) ){
+	$loaded_profile = $this->get_profile( $_GET[QUERY_VAR_NAME_PROFILE] );
 }
 else{
 	$loaded_profile = $this->default_profile;
@@ -30,7 +30,7 @@ if( ! $is_default_profile ) {
 	if ( isset( $loaded_profile['post_type_migrate_option'] ) && 'migrate_select_post_types' == $loaded_profile['post_type_migrate_option'] && 'pull' == $loaded_profile['action'] ) {
 		$convert_post_type_selection = true;
 	}
-	$loaded_profile = $this->maybe_update_profile( $loaded_profile, $_GET['wpsdb-profile'] );
+	$loaded_profile = $this->maybe_update_profile( $loaded_profile, $_GET[QUERY_VAR_NAME_PROFILE] );
 }
 
 if( false == $is_default_profile ) {

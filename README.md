@@ -25,11 +25,11 @@ The guide below assume you're using it to sync online db with local one.
 
 1. Install this plugin on BOTH your online and local installation.
 
-1. In your online installation, go to Tools > Synchronize > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
+1. In your online installation, go to Tools > Synchronizer > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
 
 1. Copy the **Connection Info**.
 
-1. In your local installation, go to Tools > Synchronize > Migrate tab. Choose Pull or Push and paste in the Connection Info.
+1. In your local installation, go to Tools > Synchronizer > Migrate tab. Choose Pull or Push and paste in the Connection Info.
 
     > **PULL** means downloading the online db and use it to overwrite your local db.  
     > **PUSH** is uploading your local db to overwrite online db.
@@ -89,11 +89,11 @@ The guide below assume you're using it to sync online db with local one.
 
 1. Install this plugin on BOTH your online and local installation.
 
-1. In your online installation, go to Tools > Synchronize > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
+1. In your online installation, go to Tools > Synchronizer > Settings tab. Tick all: "Accept pull", "Accept push", and "Enable SSL".
 
 1. Copy the **Connection Info**.
 
-1. In your local installation, go to Tools > Synchronize > Migrate tab. Choose Pull or Push and paste in the Connection Info.
+1. In your local installation, go to Tools > Synchronizer > Migrate tab. Choose Pull or Push and paste in the Connection Info.
 
     > **PULL** means downloading the online db and use it to overwrite your local db.  
     > **PUSH** is uploading your local db to overwrite online db.

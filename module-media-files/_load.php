@@ -1,7 +1,5 @@
 <?php
-/*
-Origin: http://github.com/wp-sync-db/wp-sync-db-media-files
-*/
+/* Origin: http://github.com/wp-sync-db/wp-sync-db-media-files */
 
 require_once 'version.php';
 $GLOBALS['wpsdb_meta']['wp-sync-db-media-files']['folder'] = basename( plugin_dir_path( __FILE__ ) );
