@@ -22,7 +22,7 @@ class WPSDB extends WPSDB_Base {
   function __construct( $plugin_file_path ) {
     parent::__construct( $plugin_file_path );
 
-    $this->plugin_slug = 'wp-sync-db';
+    $this->plugin_slug = 'sitesync';
     $this->plugin_version = $GLOBALS['wpsdb_meta']['wp-sync-db']['version'];
 
     $this->max_insert_string_len = 50000; // 50000 is the default as defined by phphmyadmin
