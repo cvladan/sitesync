@@ -958,7 +958,7 @@ msgstr ""
 #: template/migrate.php:440
 msgid ""
 "Whoa! We've detected that the database table prefix differs between "
-"installations. Clicking the Migrate DB button below will create new database "
+"installations. Clicking the Synchronize button below will create new database "
 "tables in your local database with prefix \"<span class=\"remote-prefix\"></"
 "span>\"."
 msgstr ""
@@ -982,7 +982,7 @@ msgstr ""
 #, php-format
 msgid ""
 "Whoa! We've detected that the database table prefix differs between "
-"installations. Clicking the Migrate DB button below will create new database "
+"installations. Clicking the Synchronize button below will create new database "
 "tables in the remote database with prefix \"%s\"."
 msgstr ""
 

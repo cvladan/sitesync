@@ -21,7 +21,7 @@ class WPSDB_Base {
 	protected $doing_cli_migration = false;
 
 	function __construct( $plugin_file_path ) {
-		$this->settings = get_option( 'wpsdb_settings' );
+		$this->settings = get_option(SS_OPTION_SETTINGS);
 
 		$this->addons = array(
 			'wp-sync-db-media-files/wp-sync-db-media-files.php' => array(
@@ -253,14 +253,14 @@ class WPSDB_Base {
 		if( $additional_error_var !== false ){
 			$error .= print_r( $additional_error_var, true ) . "\n\n";
 		}
-		$log = get_option( 'wpsdb_error_log' );
+		$log = get_option( SS_OPTION_ERRORLOG );
 		if( $log ) {
 			$log = $log . $error;
 		}
 		else {
 			$log = $error;
 		}
-		update_option( 'wpsdb_error_log', $log );
+		update_option( SS_OPTION_ERRORLOG, $log );
 	}
 
 	function display_errors() {

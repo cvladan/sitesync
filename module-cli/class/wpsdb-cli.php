@@ -12,16 +12,16 @@ class WPSDB_CLI extends WPSDB_Addon {
 
 	function cli_migration( $profile ) {
 		global $wpsdb;
-		$wpsdb_settings = get_option( 'wpsdb_settings' );
+		$settings = get_option(SS_OPTION_SETTINGS);
 		--$profile;
 		if( ! $this->meets_version_requirements( '1.4b1' ) ) return $this->cli_error( __( 'Please update WP Sync DB.', 'wp-sync-db-cli' ) );
 		if( ! isset( $profile ) ) return $this->cli_error( __( 'Profile ID missing.', 'wp-sync-db-cli' ) );
-		if( ! isset( $wpsdb_settings['profiles'][$profile] ) ) return $this->cli_error( __( 'Profile ID not found.', 'wp-sync-db-cli' ) );
+		if( ! isset( $settings['profiles'][$profile] ) ) return $this->cli_error( __( 'Profile ID not found.', 'wp-sync-db-cli' ) );
 
 		$this->set_time_limit();
 		$wpsdb->set_cli_migration();
 
-		$profile = apply_filters( 'wpsdb_cli_profile_before_migration', $wpsdb_settings['profiles'][$profile] );
+		$profile = apply_filters( 'wpsdb_cli_profile_before_migration', $settings['profiles'][$profile] );
 		$connection_info = explode( "\n", $profile['connection_info'] );
 		$form_data = http_build_query( $profile );
 
