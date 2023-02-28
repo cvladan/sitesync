@@ -48,10 +48,10 @@ class WPSDB_Base {
 		$this->plugin_title = str_ireplace( array( 'db', 'wp', '.php' ), array( 'DB', 'WP', '' ), $this->plugin_title );
 
 		if ( is_multisite() ) {
-			$this->plugin_base = 'settings.php?page=wp-sync-db';
+			$this->plugin_base = 'settings.php?page=' . PLUGIN_SLUG;
 		}
 		else {
-			$this->plugin_base = 'tools.php?page=wp-sync-db';
+			$this->plugin_base = 'tools.php?page=' . PLUGIN_SLUG;
 		}
 
 		// allow devs to change the temporary prefix applied to the tables

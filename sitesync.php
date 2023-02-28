@@ -16,6 +16,9 @@ $GLOBALS['wpsdb_meta']['wp-sync-db']['folder'] = basename( plugin_dir_path( __FI
 
 define( 'WPSDB_ROOT', plugin_dir_url(__FILE__) );
 
+define( 'PLUGIN_SLUG', 'sitesync');
+define( 'QUERY_VAR_NAME_PROFILE', 'profile');
+
 define( 'SS_OPTION_SETTINGS', 'sitesync_settings');
 define( 'SS_OPTION_ERRORLOG', 'sitesync_errorlog');
 

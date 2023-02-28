@@ -170,11 +170,11 @@ class WPSDB extends WPSDB_Base {
 
     if ( is_multisite() ) {
       add_action( 'network_admin_menu', array( $this, 'network_admin_menu' ) );
-      $this->plugin_base = 'settings.php?page=wp-sync-db';
+      $this->plugin_base = 'settings.php?page=' . PLUGIN_SLUG;
     }
     else {
       add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-      $this->plugin_base = 'tools.php?page=wp-sync-db';
+      $this->plugin_base = 'tools.php?page=' . PLUGIN_SLUG;
     }
   }
 
@@ -1386,7 +1386,7 @@ class WPSDB extends WPSDB_Base {
 
         <?php
         // select profile if more than > 1 profile saved
-        if ( ! empty( $this->settings['profiles'] ) && ! isset( $_GET['wpsdb-profile'] ) ) {
+        if ( ! empty( $this->settings['profiles'] ) && ! isset( $_GET[QUERY_VAR_NAME_PROFILE] ) ) {
           $this->template( 'profile' );
         }
         else {
@@ -2174,12 +2174,12 @@ class WPSDB extends WPSDB_Base {
   }
 
   function network_admin_menu() {
-    $hook_suffix = add_submenu_page( 'settings.php', 'Synchronize', 'Synchronize', 'manage_network_options', 'wp-sync-db', array( $this, 'options_page' ) );
+    $hook_suffix = add_submenu_page( 'settings.php', 'Synchronize', 'Synchronize', 'manage_network_options', PLUGIN_SLUG, array( $this, 'options_page' ) );
     $this->after_admin_menu( $hook_suffix );
   }
 
   function admin_menu() {
-    $hook_suffix = add_management_page( 'Synchronize', 'Synchronize', 'export', 'wp-sync-db', array( $this, 'options_page' ) );
+    $hook_suffix = add_management_page( 'Synchronize', 'Synchronize', 'export', PLUGIN_SLUG, array( $this, 'options_page' ) );
     $this->after_admin_menu( $hook_suffix );
   }
 
@@ -2364,7 +2364,7 @@ class WPSDB extends WPSDB_Base {
       var wpsdb_this_uploads_dir = '<?php echo addslashes( $this->get_short_uploads_dir() ); ?>';
       var wpsdb_write_permission = <?php echo ( is_writeable( $this->get_upload_info( 'path' ) ) ? 'true' : 'false' ); ?>;
       var wpsdb_nonces = <?php echo json_encode( $nonces ); ?>;
-      var wpsdb_profile = '<?php echo ( isset( $_GET['wpsdb-profile'] ) ? $_GET['wpsdb-profile'] : '-1' ); ?>';
+      var wpsdb_profile = '<?php echo ( isset( $_GET[QUERY_VAR_NAME_PROFILE] ) ? $_GET[QUERY_VAR_NAME_PROFILE] : '-1' ); ?>';
       <?php do_action( 'wpsdb_js_variables' ); ?>
     </script>
     <?php
