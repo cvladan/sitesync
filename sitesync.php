@@ -3,7 +3,7 @@
 Plugin Name: SiteSync
 Description: Synchronize database and uploads folder between sites
 Author: Colovic Vladan
-Version: 1.7.2
+Version: 1.7.3
 Author URI: https://www.cvladan.com
 Plugin URI: http://github.com/cvladan/sitesync
 Network: True
@@ -22,7 +22,6 @@ define( 'QUERY_VAR_NAME_PROFILE', 'profile');
 define( 'SS_OPTION_SETTINGS', 'sitesync_settings');
 define( 'SS_OPTION_ERRORLOG', 'sitesync_errorlog');
 
-
 // Define the directory seperator if it isn't already
 if( !defined( 'DS' ) ) {
   if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
@@ -32,6 +31,19 @@ if( !defined( 'DS' ) ) {
     define('DS', '/');
   }
 }
+
+# GitHub update checks
+#
+require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker( 'https://github.com/cvladan/sitesync/', __FILE__, 'sitesync' );
+
+# Set the branch that contains the stable release.
+# $myUpdateChecker->setBranch('stable-branch-name');
+
+# Optional: If you're using a private repository, specify the access token like this:
+# $myUpdateChecker->setAuthentication('your-token-here');
 
 function wp_sync_db_loaded() {
   // if neither WordPress admin nor running from wp-cli, exit quickly to prevent performance impact
