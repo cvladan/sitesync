@@ -34,9 +34,7 @@ if( !defined( 'DS' ) ) {
 
 # GitHub update checks
 #
-require 'plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
 $myUpdateChecker = PucFactory::buildUpdateChecker( 'https://github.com/cvladan/sitesync/', __FILE__, 'sitesync' );
 
 # Set the branch that contains the stable release.
