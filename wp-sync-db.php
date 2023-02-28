@@ -1,13 +1,15 @@
 <?php
 /*
-Plugin Name: WP Sync DB
-Description: Sync database between different installs.
-Author: Pixel Studio
-Version: 1.7.1
-Author URI: https://pixelstudio.id
-Plugin URI: http://github.com/hrsetyono/wp-sync-db
+Plugin Name: SiteSync
+Description: Synchronize database and uploads folder between sites
+Author: Colovic Vladan
+Version: 1.7.2
+Author URI: https://www.cvladan.com
+Plugin URI: http://github.com/cvladan/sitesync
 Network: True
 */
+
+require __DIR__ . '/vendor/autoload.php';
 
 $GLOBALS['wpsdb_meta']['wp-sync-db']['version'] = '1.7';
 $GLOBALS['wpsdb_meta']['wp-sync-db']['folder'] = basename( plugin_dir_path( __FILE__ ) );
@@ -16,6 +18,7 @@ define( 'WPSDB_ROOT', plugin_dir_url(__FILE__) );
 
 define( 'SS_OPTION_SETTINGS', 'sitesync_settings');
 define( 'SS_OPTION_ERRORLOG', 'sitesync_errorlog');
+
 
 // Define the directory seperator if it isn't already
 if( !defined( 'DS' ) ) {

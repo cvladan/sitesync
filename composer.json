@@ -1,22 +1,27 @@
 {
   "name": "cvladan/sitesync",
-  "description": "WordPress plugin to sync database between different installs",
+  "description": "WordPress plugin to synchronize database and uploads folder between sites",
   "keywords": ["wordpress", "plugin", "database", "sync"],
   "type": "wordpress-plugin",
   "homepage": "https://github.com/cvladan/sitesync/",
   "authors": [
     {
       "name": "Vladan Colovic",
-      "email": "cvladan@gmail.com",
+      "email": "cvladan@gmail.com"
     }
   ],
   "license": "GPL-2.0",
   "require": {
     "php": ">=7.0.0",
-    "composer/installers": "~1.0"
-    "composer/installers": ">=1.0.6"
+    "composer/installers": ">=1.0.6",
+    "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "scripts": {
     "test": "./test.sh"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
   }
 }
