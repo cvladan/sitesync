@@ -1349,8 +1349,9 @@ class WPSDB extends WPSDB_Base {
       <?php
       }
 
+      $safe_mode = false;
       $hide_warning = apply_filters( 'wpsdb_hide_safe_mode_warning', false );
-      if ( function_exists( 'ini_get' ) && ini_get( 'safe_mode' ) && !$hide_warning ) { ?>
+      if ( function_exists( 'ini_get' ) && ini_get('safe_mode') && !$hide_warning ) { ?>
         <div class="updated warning inline-message">
           <?php
           _e( "<strong>PHP Safe Mode Enabled</strong> &mdash; We do not officially support running this plugin in safe mode because <code>set_time_limit()</code> has no effect. Therefore we can't extend the run time of the script and ensure it doesn't time out before the migration completes. We haven't disabled the plugin however, so you're free to cross your fingers and hope for the best. However, if you have trouble, we can't help you until you turn off safe mode.", 'wp-sync-db' );
@@ -2172,7 +2173,7 @@ class WPSDB extends WPSDB_Base {
     return str_replace( '\'', '\\\'', $a_string );
   }
 
-  function network_admin_menu() {hronize
+  function network_admin_menu() {
     $hook_suffix = add_submenu_page( 'settings.php', 'Synchronize', 'Synchronize', 'manage_network_options', 'wp-sync-db', array( $this, 'options_page' ) );
     $this->after_admin_menu( $hook_suffix );
   }
