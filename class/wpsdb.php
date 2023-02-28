@@ -1322,7 +1322,7 @@ class WPSDB extends WPSDB_Base {
 
     <div class="wrap wpsdb">
 
-      <div id="icon-tools" class="icon32"><br /></div><h2>Synchronize Site</h2>
+      <div id="icon-tools" class="icon32"><br /></div><h2>Site Synchronizer</h2>
 
       <h2 class="nav-tab-wrapper"><a href="#" class="nav-tab nav-tab-active js-action-link migrate" data-div-name="migrate-tab"><?php _e( 'Migrate', 'wp-sync-db' ); ?></a><a href="#" class="nav-tab js-action-link settings" data-div-name="settings-tab"><?php _e( 'Settings', 'wp-sync-db' ); ?></a><a href="#" class="nav-tab js-action-link help" data-div-name="help-tab"><?php _e( 'Help', 'wp-sync-db' ); ?></a></h2>
 
@@ -2174,12 +2174,12 @@ class WPSDB extends WPSDB_Base {
   }
 
   function network_admin_menu() {
-    $hook_suffix = add_submenu_page( 'settings.php', 'Synchronize', 'Synchronize', 'manage_network_options', PLUGIN_SLUG, array( $this, 'options_page' ) );
+    $hook_suffix = add_submenu_page( 'settings.php', 'Synchronizer', 'Synchronizer', 'manage_network_options', PLUGIN_SLUG, [$this, 'options_page'] );
     $this->after_admin_menu( $hook_suffix );
   }
 
   function admin_menu() {
-    $hook_suffix = add_management_page( 'Synchronize', 'Synchronize', 'export', PLUGIN_SLUG, array( $this, 'options_page' ) );
+    $hook_suffix = add_management_page( 'Synchronizer', 'Synchronizer', 'export', PLUGIN_SLUG, [$this, 'options_page'] );
     $this->after_admin_menu( $hook_suffix );
   }
 

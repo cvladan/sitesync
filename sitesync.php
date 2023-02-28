@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: SiteSync
+Plugin Name: Site Synchronizer
 Description: Synchronize database and uploads folder between sites
 Author: Colovic Vladan
-Version: 1.7.2
+Version: 1.7.1
 Author URI: https://www.cvladan.com
 Plugin URI: http://github.com/cvladan/sitesync
 Network: True
@@ -35,7 +35,7 @@ if( !defined( 'DS' ) ) {
 # GitHub update checks
 #
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-$myUpdateChecker = PucFactory::buildUpdateChecker( 'https://github.com/cvladan/sitesync/', __FILE__, 'sitesync' );
+$myUpdateChecker = PucFactory::buildUpdateChecker( 'https://github.com/cvladan/sitesync/', __FILE__, 'sitesync', 72 );
 
 # Set the branch that contains the stable release.
 # $myUpdateChecker->setBranch('stable-branch-name');
