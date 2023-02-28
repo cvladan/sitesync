@@ -14,6 +14,9 @@ $GLOBALS['wpsdb_meta']['wp-sync-db']['folder'] = basename( plugin_dir_path( __FI
 
 define( 'WPSDB_ROOT', plugin_dir_url(__FILE__) );
 
+define( 'SS_OPTION_SETTINGS', 'sitesync_settings');
+define( 'SS_OPTION_ERRORLOG', 'sitesync_errorlog');
+
 // Define the directory seperator if it isn't already
 if( !defined( 'DS' ) ) {
   if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
