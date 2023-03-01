@@ -3,13 +3,13 @@
 Plugin Name: Site Synchronizer
 Description: Synchronize database and uploads folder between sites
 Author: Colovic Vladan
-Version: 1.7.4
+Version: 1.7.5
 Author URI: https://www.cvladan.com
 Plugin URI: http://github.com/cvladan/sitesync
 Network: True
 */
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/library/autoload.php';
 
 $GLOBALS['wpsdb_meta']['wp-sync-db']['version'] = '1.7';
 $GLOBALS['wpsdb_meta']['wp-sync-db']['folder'] = basename( plugin_dir_path( __FILE__ ) );
