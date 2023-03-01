@@ -3,7 +3,7 @@
 Plugin Name: Site Synchronizer
 Description: Synchronize database and uploads folder between sites
 Author: Colovic Vladan
-Version: 1.7.3
+Version: 1.7.4
 Author URI: https://www.cvladan.com
 Plugin URI: http://github.com/cvladan/sitesync
 Network: True
